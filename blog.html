@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TechBlog - Article</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <nav class="navbar">
+
+        <a href="index.html"
+           class="logo">
+            Tech<span>Blog</span>
+        </a>
+
+        <button class="menu-btn"
+                id="menuBtn">
+            ☰
+        </button>
+
+        <div class="nav-menu"
+             id="navMenu">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#articles">
+                Articles
+            </a>
+
+            <button id="themeBtn"
+                    class="theme-btn">
+                🌙
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <article class="post-page">
+
+        <div class="post-header">
+
+            <span class="category"
+                  id="postCategory">
+                Web Development
+            </span>
+
+            <h1 id="postTitle">
+                Modern Web Development
+                Roadmap for Beginners
+            </h1>
+
+            <div class="article-meta">
+
+                <span id="postDate">
+                    August 20, 2026
+                </span>
+
+                <span>
+                    5 min read
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <img
+            id="postImage"
+            class="post-image"
+            src="images/web-development.jpg"
+            alt="Article image"
+        >
+
+
+        <div class="post-content"
+             id="postContent">
+
+            <p>
+                Web development is one of the most exciting
+                areas of software engineering. Modern websites
+                combine HTML, CSS and JavaScript to provide
+                fast and interactive experiences.
+            </p>
+
+            <h2>
+                Start With HTML
+            </h2>
+
+            <p>
+                HTML provides the structure of a website.
+                Beginners should learn headings, paragraphs,
+                links, images, forms, tables and semantic
+                elements.
+            </p>
+
+            <h2>
+                Learn CSS
+            </h2>
+
+            <p>
+                CSS controls the appearance of a website.
+                Important concepts include Flexbox, Grid,
+                responsive design, animations and media queries.
+            </p>
+
+            <h2>
+                Learn JavaScript
+            </h2>
+
+            <p>
+                JavaScript adds interactivity to web pages.
+                Learn variables, functions, arrays, objects,
+                DOM manipulation, events and APIs.
+            </p>
+
+        </div>
+
+
+        <!-- Social Sharing -->
+
+        <div class="share-section">
+
+            <h3>
+                Share this article
+            </h3>
+
+            <div class="share-buttons">
+
+                <button onclick="shareArticle('linkedin')">
+                    LinkedIn
+                </button>
+
+                <button onclick="shareArticle('twitter')">
+                    Twitter
+                </button>
+
+                <button onclick="copyArticleLink()">
+                    Copy Link
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tags -->
+
+        <div class="tags">
+
+            <span>#WebDevelopment</span>
+            <span>#HTML</span>
+            <span>#CSS</span>
+            <span>#JavaScript</span>
+
+        </div>
+
+
+        <!-- Comments -->
+
+        <section class="comments">
+
+            <h2>
+                Comments
+            </h2>
+
+            <form id="commentForm">
+
+                <input
+                    type="text"
+                    id="commentName"
+                    placeholder="Your name"
+                    required
+                >
+
+                <textarea
+                    id="commentText"
+                    placeholder="Write a comment..."
+                    required
+                ></textarea>
+
+                <button class="primary-btn">
+                    Post Comment
+                </button>
+
+            </form>
+
+
+            <div id="commentList">
+            </div>
+
+        </section>
+
+
+        <!-- Related Articles -->
+
+        <section class="related">
+
+            <h2>
+                Related Articles
+            </h2>
+
+            <div class="related-grid">
+
+                <a href="post.html?id=2"
+                   class="related-card">
+
+                    <img src="images/java.jpg"
+                         alt="Java">
+
+                    <h3>
+                        Why Java Is Still Important
+                    </h3>
+
+                </a>
+
+
+                <a href="post.html?id=3"
+                   class="related-card">
+
+                    <img src="images/ai.jpg"
+                         alt="Artificial Intelligence">
+
+                    <h3>
+                        Getting Started With AI
+                    </h3>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </article>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="copyright">
+
+        © 2026 TechBlog.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
