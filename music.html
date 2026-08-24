@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Melody - Music Player</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div class="logo">
+                🎵 Melody
+            </div>
+
+            <button
+                id="themeBtn"
+                class="theme-btn"
+                title="Toggle theme"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+
+        <!-- Main Player -->
+
+        <main class="player-container">
+
+
+            <!-- Album Artwork -->
+
+            <div class="album-section">
+
+                <div class="album-art-container">
+
+                    <img
+                        id="albumArt"
+                        class="album-art"
+                        src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+                        alt="Album Artwork"
+                    >
+
+                </div>
+
+
+                <button
+                    id="favoriteBtn"
+                    class="favorite-btn"
+                    title="Favorite"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+
+            <!-- Song Information -->
+
+            <div class="song-info">
+
+                <h1 id="songTitle">
+                    Summer Vibes
+                </h1>
+
+                <p id="artistName">
+                    Melody Artist
+                </p>
+
+            </div>
+
+
+
+            <!-- Progress -->
+
+            <div class="progress-section">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+
+                <input
+                    type="range"
+                    id="progressBar"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+
+                <span id="duration">
+                    0:00
+                </span>
+
+            </div>
+
+
+
+            <!-- Controls -->
+
+            <div class="controls">
+
+                <button
+                    id="shuffleBtn"
+                    class="control-btn"
+                    title="Shuffle"
+                >
+                    🔀
+                </button>
+
+
+                <button
+                    id="previousBtn"
+                    class="control-btn"
+                    title="Previous"
+                >
+                    ⏮
+                </button>
+
+
+                <button
+                    id="playBtn"
+                    class="play-btn"
+                    title="Play"
+                >
+                    ▶
+                </button>
+
+
+                <button
+                    id="nextBtn"
+                    class="control-btn"
+                    title="Next"
+                >
+                    ⏭
+                </button>
+
+
+                <button
+                    id="repeatBtn"
+                    class="control-btn"
+                    title="Repeat"
+                >
+                    🔁
+                </button>
+
+            </div>
+
+
+
+            <!-- Volume -->
+
+            <div class="volume-section">
+
+                <button
+                    id="muteBtn"
+                    class="volume-btn"
+                    title="Mute"
+                >
+                    🔊
+                </button>
+
+
+                <input
+                    type="range"
+                    id="volumeBar"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="1"
+                >
+
+            </div>
+
+
+
+            <!-- Playlist -->
+
+            <section class="playlist-section">
+
+                <div class="playlist-header">
+
+                    <h2>
+                        Playlist
+                    </h2>
+
+                    <span id="playlistCount">
+                        3 Songs
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="playlist"
+                    class="playlist"
+                >
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- Audio -->
+
+        <audio
+            id="audio"
+            preload="metadata"
+        ></audio>
+
+
+        <footer>
+
+            <p>
+                Melody Music Player © 2026
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
