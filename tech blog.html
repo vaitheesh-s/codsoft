@@ -1,275 +1,1046 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>TechBlog - My Blog Website</title>
 
-    <title>TechBlog - Article</title>
+    <style>
 
-    <link rel="stylesheet"
-          href="style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+
+        /* Navigation */
+
+        nav {
+            background: #111827;
+            color: white;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 8%;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+
+        /* Hero */
+
+        .hero {
+            min-height: 500px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #0f172a,
+                #1e3a8a
+            );
+
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 19px;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            background: #38bdf8;
+            color: #111827;
+
+            padding: 12px 25px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .hero-button:hover {
+            background: white;
+        }
+
+
+        /* Common Section */
+
+        section {
+            padding: 60px 8%;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 32px;
+        }
+
+
+        /* Featured */
+
+        .featured {
+            background: white;
+        }
+
+        .featured-box {
+            max-width: 850px;
+            margin: auto;
+
+            padding: 35px;
+
+            background: #e0f2fe;
+
+            border-radius: 15px;
+        }
+
+        .featured-box h2 {
+            text-align: left;
+            margin: 15px 0;
+        }
+
+        .featured-box p {
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #2563eb;
+            color: white;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+        }
+
+        button {
+            border: none;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 10px 18px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* Search */
+
+        .search-area {
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 25px;
+        }
+
+        .search-area input {
+            width: 500px;
+            max-width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+        }
+
+
+        /* Filters */
+
+        .filters {
+            display: flex;
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 35px;
+        }
+
+        .filters button {
+            background: #111827;
+        }
+
+        .filters button:hover {
+            background: #2563eb;
+        }
+
+
+        /* Blog Grid */
+
+        .blog-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* Blog Card */
+
+        .blog-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .blog-card .blog-category {
+            color: #2563eb;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+        .blog-card h3 {
+            margin: 12px 0;
+
+            font-size: 22px;
+        }
+
+        .blog-card p {
+            color: #555;
+
+            line-height: 1.6;
+
+            margin-bottom: 18px;
+        }
+
+        .blog-date {
+            font-size: 13px;
+
+            color: #777;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* Categories */
+
+        .categories {
+            background: #e5e7eb;
+        }
+
+        .category-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category h3 {
+            color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* About */
+
+        .about {
+            background: white;
+
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 700px;
+
+            margin: auto;
+
+            line-height: 1.8;
+
+            color: #555;
+        }
+
+
+        /* Footer */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        footer h3 {
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* Modal */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 2000;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+
+            width: 600px;
+            max-width: 100%;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            position: relative;
+        }
+
+        .modal-content h2 {
+            text-align: left;
+
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            line-height: 1.7;
+
+            margin-top: 15px;
+        }
+
+        .close {
+            position: absolute;
+
+            right: 20px;
+            top: 10px;
+
+            font-size: 30px;
+
+            cursor: pointer;
+        }
+
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 45px 5%;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-<header class="header">
 
-    <nav class="navbar">
+    <!-- Navigation -->
 
-        <a href="index.html"
-           class="logo">
-            Tech<span>Blog</span>
-        </a>
+    <nav>
 
-        <button class="menu-btn"
-                id="menuBtn">
-            ☰
-        </button>
+        <div class="logo">
+            TechBlog
+        </div>
 
-        <div class="nav-menu"
-             id="navMenu">
+        <div class="nav-links">
 
-            <a href="index.html">
-                Home
-            </a>
+            <a href="#home">Home</a>
 
-            <a href="index.html#articles">
-                Articles
-            </a>
+            <a href="#blog">Blog</a>
 
-            <button id="themeBtn"
-                    class="theme-btn">
-                🌙
-            </button>
+            <a href="#categories">Categories</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
 
         </div>
 
     </nav>
 
-</header>
 
+    <!-- Home -->
 
-<main>
+    <section id="home" class="hero">
 
-    <article class="post-page">
+        <div class="hero-content">
 
-        <div class="post-header">
-
-            <span class="category"
-                  id="postCategory">
-                Web Development
-            </span>
-
-            <h1 id="postTitle">
-                Modern Web Development
-                Roadmap for Beginners
+            <h1>
+                Learn Technology
             </h1>
 
-            <div class="article-meta">
+            <p>
+                Simple blogs about HTML, CSS, JavaScript,
+                Java, AI and Database.
+            </p>
 
-                <span id="postDate">
-                    August 20, 2026
+            <a href="#blog" class="hero-button">
+                Read Blogs
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Featured Blog -->
+
+    <section class="featured">
+
+        <h2>
+            Featured Blog
+        </h2>
+
+        <div class="featured-box">
+
+            <div>
+
+                <span class="tag">
+                    Featured
                 </span>
 
-                <span>
-                    5 min read
-                </span>
+                <h2>
+                    How to Start Web Development
+                </h2>
 
-            </div>
+                <p>
+                    Learn the basic steps to start your
+                    web development journey.
+                </p>
 
-        </div>
-
-
-        <img
-            id="postImage"
-            class="post-image"
-            src="images/web-development.jpg"
-            alt="Article image"
-        >
-
-
-        <div class="post-content"
-             id="postContent">
-
-            <p>
-                Web development is one of the most exciting
-                areas of software engineering. Modern websites
-                combine HTML, CSS and JavaScript to provide
-                fast and interactive experiences.
-            </p>
-
-            <h2>
-                Start With HTML
-            </h2>
-
-            <p>
-                HTML provides the structure of a website.
-                Beginners should learn headings, paragraphs,
-                links, images, forms, tables and semantic
-                elements.
-            </p>
-
-            <h2>
-                Learn CSS
-            </h2>
-
-            <p>
-                CSS controls the appearance of a website.
-                Important concepts include Flexbox, Grid,
-                responsive design, animations and media queries.
-            </p>
-
-            <h2>
-                Learn JavaScript
-            </h2>
-
-            <p>
-                JavaScript adds interactivity to web pages.
-                Learn variables, functions, arrays, objects,
-                DOM manipulation, events and APIs.
-            </p>
-
-        </div>
-
-
-        <!-- Social Sharing -->
-
-        <div class="share-section">
-
-            <h3>
-                Share this article
-            </h3>
-
-            <div class="share-buttons">
-
-                <button onclick="shareArticle('linkedin')">
-                    LinkedIn
-                </button>
-
-                <button onclick="shareArticle('twitter')">
-                    Twitter
-                </button>
-
-                <button onclick="copyArticleLink()">
-                    Copy Link
+                <button onclick="showPost(0)">
+                    Read More
                 </button>
 
             </div>
 
         </div>
 
+    </section>
 
-        <!-- Tags -->
 
-        <div class="tags">
+    <!-- Blog Section -->
 
-            <span>#WebDevelopment</span>
-            <span>#HTML</span>
-            <span>#CSS</span>
-            <span>#JavaScript</span>
+    <section id="blog" class="blog-section">
+
+        <h2>
+            Latest Blogs
+        </h2>
+
+
+        <!-- Search -->
+
+        <div class="search-area">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search blogs..."
+                onkeyup="searchBlogs()"
+            >
 
         </div>
 
 
-        <!-- Comments -->
+        <!-- Category Filter -->
 
-        <section class="comments">
+        <div class="filters">
 
-            <h2>
-                Comments
-            </h2>
+            <button onclick="filterBlogs('All')">
+                All
+            </button>
 
-            <form id="commentForm">
+            <button onclick="filterBlogs('HTML')">
+                HTML
+            </button>
 
-                <input
-                    type="text"
-                    id="commentName"
-                    placeholder="Your name"
-                    required
-                >
+            <button onclick="filterBlogs('CSS')">
+                CSS
+            </button>
 
-                <textarea
-                    id="commentText"
-                    placeholder="Write a comment..."
-                    required
-                ></textarea>
+            <button onclick="filterBlogs('JavaScript')">
+                JavaScript
+            </button>
 
-                <button class="primary-btn">
-                    Post Comment
-                </button>
+            <button onclick="filterBlogs('Java')">
+                Java
+            </button>
 
-            </form>
+            <button onclick="filterBlogs('AI')">
+                AI
+            </button>
 
-
-            <div id="commentList">
-            </div>
-
-        </section>
+        </div>
 
 
-        <!-- Related Articles -->
+        <!-- Blog Cards -->
 
-        <section class="related">
+        <div
+            class="blog-grid"
+            id="blogContainer">
+        </div>
 
-            <h2>
-                Related Articles
-            </h2>
-
-            <div class="related-grid">
-
-                <a href="post.html?id=2"
-                   class="related-card">
-
-                    <img src="images/java.jpg"
-                         alt="Java">
-
-                    <h3>
-                        Why Java Is Still Important
-                    </h3>
-
-                </a>
+    </section>
 
 
-                <a href="post.html?id=3"
-                   class="related-card">
+    <!-- Categories -->
 
-                    <img src="images/ai.jpg"
-                         alt="Artificial Intelligence">
+    <section id="categories" class="categories">
 
-                    <h3>
-                        Getting Started With AI
-                    </h3>
+        <h2>
+            Blog Categories
+        </h2>
 
-                </a>
+        <div class="category-container">
+
+            <div class="category">
+
+                <h3>
+                    HTML
+                </h3>
+
+                <p>
+                    Learn webpage structure.
+                </p>
 
             </div>
 
-        </section>
 
-    </article>
+            <div class="category">
 
-</main>
+                <h3>
+                    CSS
+                </h3>
+
+                <p>
+                    Learn website styling.
+                </p>
+
+            </div>
 
 
-<footer class="footer">
+            <div class="category">
 
-    <div class="copyright">
+                <h3>
+                    JavaScript
+                </h3>
 
-        © 2026 TechBlog.
-        All Rights Reserved.
+                <p>
+                    Make websites interactive.
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <h3>
+                    Java
+                </h3>
+
+                <p>
+                    Learn programming concepts.
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <h3>
+                    AI
+                </h3>
+
+                <p>
+                    Explore Artificial Intelligence.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+
+    <section id="about" class="about">
+
+        <h2>
+            About TechBlog
+        </h2>
+
+        <p>
+            TechBlog is a simple technology blog website
+            created to share programming and technology
+            knowledge in an easy-to-understand way.
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer id="contact">
+
+        <h3>
+            TechBlog
+        </h3>
+
+        <p>
+            Learn. Build. Grow.
+        </p>
+
+        <p>
+            © 2026 TechBlog. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- Blog Details Popup -->
+
+    <div
+        id="postModal"
+        class="modal">
+
+        <div class="modal-content">
+
+            <span
+                class="close"
+                onclick="closePost()">
+
+                &times;
+
+            </span>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalDate"></p>
+
+            <p id="modalContent"></p>
+
+        </div>
 
     </div>
 
-</footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        // Blog data
+
+        const blogs = [
+
+            {
+                title: "HTML Basics for Beginners",
+                category: "HTML",
+                date: "September 20, 2026",
+
+                description:
+                    "Learn the basic structure of HTML and how to create your first webpage.",
+
+                content:
+                    "HTML stands for HyperText Markup Language. It is used to create the structure of webpages. HTML uses elements such as headings, paragraphs, images, links and forms."
+            },
 
 
-<script src="script.js"></script>
+            {
+                title: "Learn CSS Step by Step",
+                category: "CSS",
+                date: "September 21, 2026",
+
+                description:
+                    "Understand how CSS is used to make websites beautiful and responsive.",
+
+                content:
+                    "CSS stands for Cascading Style Sheets. It is used to control colors, fonts, spacing, layouts and responsive designs of websites."
+            },
+
+
+            {
+                title: "JavaScript for Beginners",
+                category: "JavaScript",
+                date: "September 22, 2026",
+
+                description:
+                    "Learn how JavaScript makes websites interactive.",
+
+                content:
+                    "JavaScript is a programming language used to add interactivity to websites. It can handle buttons, forms, calculations, animations and dynamic content."
+            },
+
+
+            {
+                title: "Java Programming Basics",
+                category: "Java",
+                date: "September 23, 2026",
+
+                description:
+                    "Start learning Java programming and object-oriented programming.",
+
+                content:
+                    "Java is a popular programming language. It supports object-oriented programming concepts such as classes, objects, inheritance, polymorphism and encapsulation."
+            },
+
+
+            {
+                title: "Introduction to Artificial Intelligence",
+                category: "AI",
+                date: "September 24, 2026",
+
+                description:
+                    "Understand the basic concept of Artificial Intelligence.",
+
+                content:
+                    "Artificial Intelligence allows computers to perform tasks that normally require human intelligence, such as learning, decision making and pattern recognition."
+            },
+
+
+            {
+                title: "Web Development Roadmap",
+                category: "HTML",
+                date: "September 25, 2026",
+
+                description:
+                    "A simple roadmap for students who want to become web developers.",
+
+                content:
+                    "To start web development, learn HTML first, then CSS and JavaScript. After that, learn frontend frameworks, backend development, databases and deployment."
+            }
+
+        ];
+
+
+        // Get blog container
+
+        const blogContainer =
+            document.getElementById("blogContainer");
+
+
+        // Display blogs
+
+        function displayBlogs(blogList) {
+
+            blogContainer.innerHTML = "";
+
+
+            if (blogList.length === 0) {
+
+                blogContainer.innerHTML =
+                    "<p>No blogs found.</p>";
+
+                return;
+            }
+
+
+            blogList.forEach((blog, index) => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "blog-card";
+
+
+                card.innerHTML = `
+
+                    <span class="blog-category">
+                        ${blog.category}
+                    </span>
+
+                    <h3>
+                        ${blog.title}
+                    </h3>
+
+                    <p class="blog-date">
+                        ${blog.date}
+                    </p>
+
+                    <p>
+                        ${blog.description}
+                    </p>
+
+                    <button onclick="showPost(${index})">
+                        Read More
+                    </button>
+
+                `;
+
+
+                blogContainer.appendChild(card);
+
+            });
+
+        }
+
+
+        // Show blogs initially
+
+        displayBlogs(blogs);
+
+
+        // Search blogs
+
+        function searchBlogs() {
+
+            const searchText =
+                document
+                    .getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+
+            const filteredBlogs =
+                blogs.filter(blog =>
+
+                    blog.title
+                        .toLowerCase()
+                        .includes(searchText)
+
+                    ||
+
+                    blog.category
+                        .toLowerCase()
+                        .includes(searchText)
+
+                );
+
+
+            displayBlogs(filteredBlogs);
+
+        }
+
+
+        // Filter by category
+
+        function filterBlogs(category) {
+
+            if (category === "All") {
+
+                displayBlogs(blogs);
+
+                return;
+            }
+
+
+            const filteredBlogs =
+                blogs.filter(blog =>
+                    blog.category === category
+                );
+
+
+            displayBlogs(filteredBlogs);
+
+        }
+
+
+        // Show blog details
+
+        function showPost(index) {
+
+            const blog =
+                blogs[index];
+
+
+            document.getElementById("modalTitle")
+                .textContent = blog.title;
+
+
+            document.getElementById("modalDate")
+                .textContent = blog.date;
+
+
+            document.getElementById("modalContent")
+                .textContent = blog.content;
+
+
+            document.getElementById("postModal")
+                .style.display = "flex";
+
+        }
+
+
+        // Close blog details
+
+        function closePost() {
+
+            document.getElementById("postModal")
+                .style.display = "none";
+
+        }
+
+
+        // Close modal when clicking outside
+
+        window.onclick = function(event) {
+
+            const modal =
+                document.getElementById("postModal");
+
+
+            if (event.target === modal) {
+
+                modal.style.display = "none";
+
+            }
+
+        };
+
+    </script>
 
 </body>
 
 </html>
+```
