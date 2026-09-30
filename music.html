@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,250 +6,646 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Melody - Music Player</title>
+    <title>Music Player</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #151515;
+
+            color: white;
+
+            min-height: 100vh;
+
+            padding: 30px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        .music-player {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            background: #222;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+        /* HEADER */
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .header h1 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .header p {
+
+            color: #aaa;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ALBUM */
+
+        .album-section {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .album-art {
+
+            width: 250px;
+
+            height: 250px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                135deg,
+                #7b2ff7,
+                #f107a3
+            );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        .music-symbol {
+
+            font-size: 100px;
+
+            color: white;
+
+        }
+
+
+        /* SONG */
+
+        .song-info {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .song-info h2 {
+
+            font-size: 24px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .song-info p {
+
+            color: #aaa;
+
+            font-size: 15px;
+
+        }
+
+
+        /* PROGRESS */
+
+        .progress-section {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .progress-section span {
+
+            font-size: 12px;
+
+            color: #aaa;
+
+        }
+
+
+        .progress-section input {
+
+            flex: 1;
+
+        }
+
+
+        input[type="range"] {
+
+            accent-color: #a855f7;
+
+            cursor: pointer;
+
+        }
+
+
+        /* CONTROLS */
+
+        .controls {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .control-button {
+
+            width: 45px;
+
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #333;
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+        }
+
+
+        .control-button:hover {
+
+            background: #444;
+
+        }
+
+
+        .play-button {
+
+            width: 60px;
+
+            height: 60px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #a855f7;
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+        }
+
+
+        .play-button:hover {
+
+            background: #9333ea;
+
+        }
+
+
+        /* VOLUME */
+
+        .volume-section {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .volume-section input {
+
+            flex: 1;
+
+        }
+
+
+        /* PLAYLIST */
+
+        .playlist {
+
+            border-top: 1px solid #333;
+
+            padding-top: 20px;
+
+        }
+
+
+        .playlist h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .song {
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 14px 10px;
+
+            border-radius: 10px;
+
+            margin-bottom: 8px;
+
+            cursor: pointer;
+
+        }
+
+
+        .song:hover {
+
+            background: #303030;
+
+        }
+
+
+        .song.active {
+
+            background: #333;
+
+        }
+
+
+        .song-number {
+
+            width: 40px;
+
+            color: #999;
+
+            font-size: 13px;
+
+        }
+
+
+        .song-details {
+
+            flex: 1;
+
+        }
+
+
+        .song-details h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .song-details p {
+
+            font-size: 12px;
+
+            color: #999;
+
+        }
+
+
+        .song-time {
+
+            color: #999;
+
+            font-size: 13px;
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 15px;
+
+            }
+
+
+            .music-player {
+
+                padding: 20px;
+
+            }
+
+
+            .album-art {
+
+                width: 200px;
+
+                height: 200px;
+
+            }
+
+
+            .music-symbol {
+
+                font-size: 80px;
+
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .album-art {
+
+                width: 170px;
+
+                height: 170px;
+
+            }
+
+
+            .music-symbol {
+
+                font-size: 65px;
+
+            }
+
+
+            .control-button {
+
+                width: 38px;
+
+                height: 38px;
+
+            }
+
+
+            .play-button {
+
+                width: 52px;
+
+                height: 52px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
-    <div class="app">
+
+    <div class="music-player">
 
 
         <!-- Header -->
 
-        <header class="header">
-
-            <div class="logo">
-                🎵 Melody
-            </div>
-
-            <button
-                id="themeBtn"
-                class="theme-btn"
-                title="Toggle theme"
-            >
-                🌙
-            </button>
-
-        </header>
-
-
-
-        <!-- Main Player -->
-
-        <main class="player-container">
-
-
-            <!-- Album Artwork -->
-
-            <div class="album-section">
-
-                <div class="album-art-container">
-
-                    <img
-                        id="albumArt"
-                        class="album-art"
-                        src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
-                        alt="Album Artwork"
-                    >
-
-                </div>
-
-
-                <button
-                    id="favoriteBtn"
-                    class="favorite-btn"
-                    title="Favorite"
-                >
-                    ♡
-                </button>
-
-            </div>
-
-
-
-            <!-- Song Information -->
-
-            <div class="song-info">
-
-                <h1 id="songTitle">
-                    Summer Vibes
-                </h1>
-
-                <p id="artistName">
-                    Melody Artist
-                </p>
-
-            </div>
-
-
-
-            <!-- Progress -->
-
-            <div class="progress-section">
-
-                <span id="currentTime">
-                    0:00
-                </span>
-
-
-                <input
-                    type="range"
-                    id="progressBar"
-                    min="0"
-                    max="100"
-                    value="0"
-                >
-
-
-                <span id="duration">
-                    0:00
-                </span>
-
-            </div>
-
-
-
-            <!-- Controls -->
-
-            <div class="controls">
-
-                <button
-                    id="shuffleBtn"
-                    class="control-btn"
-                    title="Shuffle"
-                >
-                    🔀
-                </button>
-
-
-                <button
-                    id="previousBtn"
-                    class="control-btn"
-                    title="Previous"
-                >
-                    ⏮
-                </button>
-
-
-                <button
-                    id="playBtn"
-                    class="play-btn"
-                    title="Play"
-                >
-                    ▶
-                </button>
-
-
-                <button
-                    id="nextBtn"
-                    class="control-btn"
-                    title="Next"
-                >
-                    ⏭
-                </button>
-
-
-                <button
-                    id="repeatBtn"
-                    class="control-btn"
-                    title="Repeat"
-                >
-                    🔁
-                </button>
-
-            </div>
-
-
-
-            <!-- Volume -->
-
-            <div class="volume-section">
-
-                <button
-                    id="muteBtn"
-                    class="volume-btn"
-                    title="Mute"
-                >
-                    🔊
-                </button>
-
-
-                <input
-                    type="range"
-                    id="volumeBar"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value="1"
-                >
-
-            </div>
-
-
-
-            <!-- Playlist -->
-
-            <section class="playlist-section">
-
-                <div class="playlist-header">
-
-                    <h2>
-                        Playlist
-                    </h2>
-
-                    <span id="playlistCount">
-                        3 Songs
-                    </span>
-
-                </div>
-
-
-                <div
-                    id="playlist"
-                    class="playlist"
-                >
-                </div>
-
-            </section>
-
-
-        </main>
-
-
-
-        <!-- Audio -->
-
-        <audio
-            id="audio"
-            preload="metadata"
-        ></audio>
-
-
-        <footer>
+        <div class="header">
+
+            <h1>
+                Music Player
+            </h1>
 
             <p>
-                Melody Music Player © 2026
+                Listen to your favorite music
             </p>
 
-        </footer>
+        </div>
+
+
+        <!-- Album Artwork -->
+
+        <div class="album-section">
+
+            <div class="album-art">
+
+                <div class="music-symbol">
+                    ♪
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Song Information -->
+
+        <div class="song-info">
+
+            <h2 id="songTitle">
+                Perfect
+            </h2>
+
+            <p id="artistName">
+                Ed Sheeran
+            </p>
+
+        </div>
+
+
+        <!-- Progress -->
+
+        <div class="progress-section">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+
+            <input
+                type="range"
+                id="progressBar"
+                min="0"
+                max="100"
+                value="0">
+
+
+            <span id="duration">
+                0:00
+            </span>
+
+        </div>
+
+
+        <!-- Controls -->
+
+        <div class="controls">
+
+            <button
+                class="control-button"
+                id="previousButton">
+
+                ⏮
+
+            </button>
+
+
+            <button
+                class="play-button"
+                id="playButton">
+
+                ▶
+
+            </button>
+
+
+            <button
+                class="control-button"
+                id="nextButton">
+
+                ⏭
+
+            </button>
+
+        </div>
+
+
+        <!-- Volume -->
+
+        <div class="volume-section">
+
+            <button
+                class="control-button"
+                id="muteButton">
+
+                🔊
+
+            </button>
+
+
+            <input
+                type="range"
+                id="volumeBar"
+                min="0"
+                max="100"
+                value="70">
+
+        </div>
+
+
+        <!-- Playlist -->
+
+        <div class="playlist">
+
+            <h2>
+                Playlist
+            </h2>
+
+            <div id="playlist">
+
+                <!-- Songs added by JavaScript -->
+
+            </div>
+
+        </div>
 
     </div>
 
 
-    <script src="script.js"></script>
+    <!-- Audio -->
+
+    <audio id="audio"></audio>
+
+
+    <script>
+
+        /*
+         * Paste your t4.js JavaScript code here.
+         *
+         * Your JavaScript should control:
+         * - Play / Pause
+         * - Previous / Next
+         * - Progress bar
+         * - Volume
+         * - Mute
+         * - Playlist
+         * - Song title and artist
+         */
+
+    </script>
+
 
 </body>
 
 </html>
+```
